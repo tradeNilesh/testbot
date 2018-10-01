@@ -8,33 +8,34 @@ if($method == 'POST'){
 	$json = json_decode($requestBody);
 
 	$text = $json->queryResult->intent->displayName;
-
-	 
+ 
 	switch ($text) {
 		case 'hi':
-			echo "inside hi";
-			$json->queryResult->fulfillmentText = "Hi, Nice to meet you";
+			$check->speech = "Hi, Nice to meet you";
+			$check->displayText = "Hi, Nice to meet you";
+			$check->source = "webhook-echo-sample";
 			break;
 
 		case 'bye':
-			echo "inside bye";
-			$json->queryResult->fulfillmentText = "Bye, good night";
+		$check->speech = "Hi, Nice to meet you";
+		$check->displayText = "Hi, Nice to meet you";
+		$check->source = "webhook-echo-sample";
 			break;
 
 		case 'anything':
-			echo "inside anything";
-			$json->queryResult->fulfillmentText = "Yes, you can type anything here.";
+		$check->speech = "Hi, Nice to meet you";
+		$check->displayText = "Hi, Nice to meet you";
+		$check->source = "webhook-echo-sample";
 			break;
 		
 		default:
-			echo "inside default";
-			$json->queryResult->fulfillmentText = "Sorry, I didnt get that. Please ask me something else.";
+		$check->speech = "Hi, Nice to meet you";
+		$check->displayText = "Hi, Nice to meet you";
+		$check->source = "webhook-echo-sample";
 			break;
 	}
  
-	echo "inside final call";	
-	echo json_encode($json);
-	exit;
+	echo json_encode($check);
 }
 else
 {
