@@ -23,7 +23,7 @@ if($method == 'POST'){
 			break;
 
 		case 'anything':
-		$check->fulfillmentText = "Hi, Nice to meet you";
+		$check->fulfillmentText = "Hi, Nice to meet you anything";
 		//$check->displayText = "Hi, Nice to meet you";
 		//$check->source = "webhook-echo-sample";
 			break;
