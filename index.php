@@ -9,6 +9,8 @@ if($method == 'POST'){
 
 	$text = $json->queryResult->intent->displayName;
 
+	echo $text;exit;
+
 	switch ($text) {
 		case 'hi':
 			$json->queryResult->fulfillmentMessages->text->text = "Hi, Nice to meet you";
