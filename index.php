@@ -9,9 +9,7 @@ if($method == 'POST'){
 
 	$text = $json->queryResult->intent->displayName;
 
-	echo "print";	
-	echo $json;
-
+	 
 	switch ($text) {
 		case 'hi':
 			echo "inside hi";
