@@ -11,27 +11,27 @@ if($method == 'POST'){
  
 	switch ($text) {
 		case 'hi':
-			$check->speech = "Hi, Nice to meet you";
-			$check->displayText = "Hi, Nice to meet you";
-			$check->source = "webhook-echo-sample";
+		$check->fulfillmentText = "Hi, Nice to meet you";
+			//$check->displayText = "Hi, Nice to meet you";
+			//$check->source = "webhook-echo-sample";
 			break;
 
 		case 'bye':
-		$check->speech = "Hi, Nice to meet you";
-		$check->displayText = "Hi, Nice to meet you";
-		$check->source = "webhook-echo-sample";
+		$check->fulfillmentText = "Hi, Nice to meet you";
+		//$check->displayText = "Hi, Nice to meet you";
+		//$check->source = "webhook-echo-sample";
 			break;
 
 		case 'anything':
-		$check->speech = "Hi, Nice to meet you";
-		$check->displayText = "Hi, Nice to meet you";
-		$check->source = "webhook-echo-sample";
+		$check->fulfillmentText = "Hi, Nice to meet you";
+		//$check->displayText = "Hi, Nice to meet you";
+		//$check->source = "webhook-echo-sample";
 			break;
 		
 		default:
-		$check->speech = "Hi, Nice to meet you";
-		$check->displayText = "Hi, Nice to meet you";
-		$check->source = "webhook-echo-sample";
+		$check->fulfillmentText = "Hi, Nice to meet you";
+		//$check->displayText = "Hi, Nice to meet you";
+		//$check->source = "webhook-echo-sample";
 			break;
 	}
  
