@@ -13,22 +13,22 @@ if($method == 'POST'){
 	switch ($text) {
 		case 'hi':
 			echo "inside hi";
-			$json->queryResult->fulfillmentMessages->text->text = "Hi, Nice to meet you";
+			$json->queryResult->fulfillmentText = "Hi, Nice to meet you";
 			break;
 
 		case 'bye':
 			echo "inside bye";
-			$json->queryResult->fulfillmentMessages->text->text = "Bye, good night";
+			$json->queryResult->fulfillmentText = "Bye, good night";
 			break;
 
 		case 'anything':
 			echo "inside anything";
-			$json->queryResult->fulfillmentMessages->text->text = "Yes, you can type anything here.";
+			$json->queryResult->fulfillmentText = "Yes, you can type anything here.";
 			break;
 		
 		default:
 			echo "inside default";
-			$json->queryResult->fulfillmentMessages->text->text = "Sorry, I didnt get that. Please ask me something else.";
+			$json->queryResult->fulfillmentText = "Sorry, I didnt get that. Please ask me something else.";
 			break;
 	}
  
