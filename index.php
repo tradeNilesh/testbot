@@ -6,10 +6,10 @@ $text_temp = $_REQUEST['text_temp'];
 $check->fulfillmentText = $_REQUEST;
 
 $requestBody = file_get_contents('php://input');
-$json = json_decode($requestBody);
 
 
-echo json_encode($json);exit;
+
+echo json_encode($requestBody);exit;
 
 function explodeKeyword($text)
 {
