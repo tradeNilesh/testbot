@@ -3,7 +3,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 $text_temp = $_REQUEST['text_temp'];
 
-$check->fulfillmentText = "Hi, Nice to meet you";
+$check->fulfillmentText = $text_temp;
 echo json_encode($check);exit;
 
 function explodeKeyword($text)
