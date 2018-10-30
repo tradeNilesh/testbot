@@ -9,7 +9,7 @@ $requestBody = file_get_contents('php://input');
 
 echo json_encode($_REQUEST);
 
-echo json_encode($requestBody);exit;
+exit;
 
 function explodeKeyword($text)
 {
