@@ -7,7 +7,7 @@ $check->fulfillmentText = $_REQUEST;
 
 $requestBody = file_get_contents('php://input');
 
-echo $_REQUEST;
+echo json_encode($_REQUEST);
 
 echo json_encode($requestBody);exit;
 
