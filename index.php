@@ -3,7 +3,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 $text_temp = $_REQUEST['text_temp'];
 
-$check->fulfillmentText = $text_temp;
+$check->fulfillmentText = $_REQUEST;
 echo json_encode($check);exit;
 
 function explodeKeyword($text)
