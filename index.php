@@ -3,7 +3,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 $text_temp = $_REQUEST['text_temp'];
 
-return "text";exit;
+echo "text";exit;
 
 function explodeKeyword($text)
 {
