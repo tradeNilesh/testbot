@@ -4,7 +4,12 @@ $method = $_SERVER['REQUEST_METHOD'];
 $text_temp = $_REQUEST['text_temp'];
 
 $check->fulfillmentText = $_REQUEST;
-echo json_encode($check);exit;
+
+$requestBody = file_get_contents('php://input');
+$json = json_decode($requestBody);
+
+
+echo json_encode($json);exit;
 
 function explodeKeyword($text)
 {
