@@ -3,11 +3,11 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 $text_temp = $_REQUEST;
 
-$check->fulfillmentText = $_REQUEST;
+$check->fulfillmentText = $_REQUEST["data"];
 
 $requestBody = file_get_contents('php://input');
 
-echo json_encode($_REQUEST);
+echo json_encode($check->fulfillmentText);
 
 exit;
 
