@@ -14,7 +14,8 @@ if($method == 'POST'){
 	$AccountID = "32707";
 
 	$action = $json->result->action;
-	$check->fulfillment =  $action;
+	$check->speech =  $action;
+	$check->displayText =  $action;
 
 	echo json_encode($check);exit();
 
