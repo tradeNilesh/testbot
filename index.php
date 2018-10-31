@@ -16,11 +16,13 @@ if($method == 'POST'){
 	$action = $json->result->action;
 	$check->speech =  $action;
 	$check->displayText =  $action;
-
-	echo json_encode($check);exit();
-
 	$AccountID = $json->result->contexts->parameters->accountID;
 	$profileID  = $json->result->contexts->parameters->profileID;
+	$check->AccountID =  $AccountID;
+	$check->profileID =  $profileID;
+	echo json_encode($check);exit();
+
+	
 	 
 	
 	switch ($action) 
