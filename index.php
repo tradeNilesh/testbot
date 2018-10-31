@@ -113,6 +113,7 @@ if($method == 'POST'){
 
 		case 'balance':
 			 $data = postApi();
+			 echo $data;exit();
 			 $check->speech =  $data;
 			 $check->displayText =  $data;
 		break;
@@ -125,6 +126,7 @@ if($method == 'POST'){
 
  
 	echo json_encode($check);
+	exit();
 }
 else
 {
