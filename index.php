@@ -117,6 +117,63 @@ if($method == 'POST'){
 			 $check->displayText =  $data;
 		break;
 
+		case 'equity':
+			 $data = postApi($action,$profileID,$AccountID);
+			 $check->speech =  $data;
+			 $check->displayText =  $data;
+		break;
+
+		case 'switchaccount':
+			 $data = postApi($action,$profileID,$AccountID);
+			 $check->speech =  $data;
+			 $check->displayText =  $data;
+		break;
+
+
+		case 'activeallocations':
+			 $data = postApi($action,$profileID,$AccountID);
+			 $check->speech =  $data;
+			 $check->displayText =  $data;
+		break;
+
+
+		case 'openposition':
+			 $data = postApi($action,$profileID,$AccountID);
+			 $check->speech =  $data;
+			 $check->displayText =  $data;
+		break;
+
+
+		case 'closedposition':
+			 $data = postApi($action,$profileID,$AccountID);
+			 $check->speech =  $data;
+			 $check->displayText =  $data;
+		break;
+
+		case 'maxdd':
+			 $data = postApi($action,$profileID,$AccountID);
+			 $check->speech =  $data;
+			 $check->displayText =  $data;
+		break;
+
+		case 'returnofinvestment':
+			 $data = postApi($action,$profileID,$AccountID);
+			 $check->speech =  $data;
+			 $check->displayText =  $data;
+		break;
+
+		case 'availableinvested':
+			 $data = postApi($action,$profileID,$AccountID);
+			 $check->speech =  $data;
+			 $check->displayText =  $data;
+		break;
+
+		case 'totalinvested':
+			 $data = postApi($action,$profileID,$AccountID);
+			 $check->speech =  $data;
+			 $check->displayText =  $data;
+		break;
+
 		default:
 			$check->speech =  "Hi, Its a worderful day , welcome to the Tradesocio ";
 			$check->displayText =  "Hi, Its a worderful day , welcome to the Tradesocio ";
