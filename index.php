@@ -13,6 +13,9 @@ if($method == 'POST'){
 	$AccountID = "32707";
 
 	$action = $json->result->action;
+	$check->fulfillmentText =  $action;
+	echo json_encode($check);exit();
+
 	$AccountID = $json->result->contexts->parameters->accountID;
 	$profileID  = $json->result->contexts->parameters->profileID;
 	 
