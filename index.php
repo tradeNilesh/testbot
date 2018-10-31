@@ -56,9 +56,8 @@ function postApi($action,$profileID,$AccountID)
 	curl_setopt($ch, CURLOPT_POST, TRUE);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-	$p_result = curl_exec($ch);
-	echo $p_result;
-	exit();
+	echo $p_result = curl_exec($ch);
+		
 	if (FALSE === $p_result) {
 	throw new Exception(curl_error(), curl_errno());
 	curl_close($ch);
@@ -112,6 +111,7 @@ if($method == 'POST'){
 		break;
 
 		case 'balance':
+			echo "fffff";
 			 $data = postApi();
 			 echo $data;exit();
 			 $check->speech =  $data;
