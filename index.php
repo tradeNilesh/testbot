@@ -9,8 +9,8 @@ function postApi($action,$profileID,$AccountID)
  
 	$gettextArray = explode(" ",$text);
 	//print_r($gettextArray);
-	
-	if ($action == "balance" && isset($profileID) && isset($AccountID))
+	echo $action.$profileID.$profileID;
+	if ($action == "balance" && isset($AccountID) && isset($profileID))
 	  $curlURL = $domain."webservices_new/getbalance.php?keyworddetails=balance&profileID=$profileID&AccountID=".$AccountID ;
 	 
 	if ($action == "equity" && isset($profileID) && isset($AccountID))
@@ -46,6 +46,7 @@ function postApi($action,$profileID,$AccountID)
 	if ($action == "totalinvested" && isset($profileID) && isset($AccountID))
 	  $curlURL = $domain."webservices_new/getbalance.php?keyworddetails=totalinvested&profileID=$profileID&AccountID=".$AccountID;
 	
+	echo   $curlURL;
 	try
 	{
 		$ch = curl_init();
@@ -112,7 +113,7 @@ if($method == 'POST'){
 
 		case 'balance':
 			echo "fffff";
-			 $data = postApi();
+			 $data = postApi($action,$profileID,$AccountID);
 			 echo $data;exit();
 			 $check->speech =  $data;
 			 $check->displayText =  $data;
