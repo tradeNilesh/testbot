@@ -16,8 +16,8 @@ if($method == 'POST'){
 	$action = $json->result->action;
 	$check->speech =  $action;
 	$check->displayText =  $action;
-	$AccountID = $json->result->contexts->parameters->accountID;
-	$profileID  = $json->result->contexts->parameters->profileID;
+	$AccountID = $json->result->contexts[0]->parameters->accountID;
+	$profileID  = $json->result->contexts[0]->parameters->profileID;
 	$check->AccountID =  $AccountID;
 	$check->profileID =  $profileID;
 	echo json_encode($check);exit();
