@@ -2,6 +2,76 @@
 
 $method = $_SERVER['REQUEST_METHOD'];
 
+function postApi($action,$profileID,$AccountID)
+{
+ 
+	$domain = "http://demosite3.fxsocio.com/";
+ 
+	$gettextArray = explode(" ",$text);
+	//print_r($gettextArray);
+	
+	if ($action == "balance" && isset($profileID) && isset($AccountID))
+	  $curlURL = $domain."webservices_new/getbalance.php?keyworddetails=balance&profileID=$profileID&AccountID=".$AccountID ;
+	 
+	if ($action == "equity" && isset($profileID) && isset($AccountID))
+	  $curlURL = $domain."webservices_new/getbalance.php?keyworddetails=equity&profileID=$profileID&AccountID=".$AccountID ;
+  
+	if ( $action == "switchaccount" && isset($profileID) && isset($AccountID)  )
+	  $curlURL = $domain."webservices_new/getbalance.php?keyworddetails=switchaccount&profileID=$profileID&AccountID=".$AccountID ;
+	
+	if ($action == "activeallocations" && isset($profileID) && isset($AccountID))
+	  $curlURL = $domain."webservices_new/getbalance.php?keyworddetails=activeallocations&profileID=$profileID&AccountID=".$AccountID;
+	 
+	if ($action == "mysummary" && isset($profileID) && isset($AccountID))
+	  $curlURL = $domain."webservices_new/getbalance.php?keyworddetails=mysummary&profileID=$profileID&AccountID=".$AccountID;
+  
+	if ($action == "setoption" && isset($profileID) && isset($AccountID))
+	  $curlURL = $domain."webservices_new/getbalance.php?text=".$text."&keyworddetails=setoption&profileID=$profileID&AccountID=".$AccountID;
+	
+	if ($action == "openposition" && isset($profileID) && isset($AccountID))
+	  $curlURL = $domain."webservices_new/getbalance.php?keyworddetails=openposition&profileID=$profileID&AccountID=".$AccountID;
+	
+	if ($action == "closedposition" && isset($profileID) && isset($AccountID))
+	  $curlURL = $domain."webservices_new/getbalance.php?keyworddetails=closedposition&profileID=$profileID&AccountID=".$AccountID;
+	
+	if ($action == "maxdd" && isset($profileID) && isset($AccountID))
+	  $curlURL = $domain."webservices_new/getbalance.php?keyworddetails=maxdd&profileID=$profileID&AccountID=".$AccountID;
+	
+	if ($action == "returnofinvestment" && isset($profileID) && isset($AccountID))
+	  $curlURL = $domain."webservices_new/getbalance.php?keyworddetails=returnofinvestment&profileID=$profileID&AccountID=".$AccountID;
+	
+	if ($action == "availableinvested" && isset($profileID) && isset($AccountID))
+	  $curlURL = $domain."webservices_new/getbalance.php?keyworddetails=availableinvested&profileID=$profileID&AccountID=".$AccountID;
+	
+	if ($action == "totalinvested" && isset($profileID) && isset($AccountID))
+	  $curlURL = $domain."webservices_new/getbalance.php?keyworddetails=totalinvested&profileID=$profileID&AccountID=".$AccountID;
+	
+	try
+	{
+		$ch = curl_init();
+		if (FALSE === $ch){
+		throw new Exception('failed to initialize');
+	}
+	curl_setopt($ch, CURLOPT_URL,$curlURL );
+	curl_setopt($ch, CURLOPT_POST, TRUE);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+	$p_result = curl_exec($ch);
+	return $p_result;
+	exit();
+	if (FALSE === $p_result) {
+	throw new Exception(curl_error(), curl_errno());
+	curl_close($ch);
+	} else{
+	curl_close($ch);
+	return $p_result;
+	}
+	}catch(Exception $e) {
+	trigger_error(sprintf('Curl failed with error #%d: %s',$e->getCode(),
+	$e->getMessage()),E_USER_ERROR); 
+	return $output ; 
+	}
+}
 
 	
 // Process only when method is POST
@@ -16,10 +86,14 @@ if($method == 'POST'){
 	$action = $json->result->action;
 	$check->speech =  $action;
 	$check->displayText =  $action;
+
 	$AccountID = $json->result->contexts[0]->parameters->accountID;
 	$profileID  = $json->result->contexts[0]->parameters->profileID;
+
+
 	$check->AccountID =  $AccountID;
 	$check->profileID =  $profileID;
+
 	echo json_encode($check);exit();
 
 	
@@ -30,28 +104,26 @@ if($method == 'POST'){
 		 
 	
 		case 'hi':
-		$check->fulfillmentText = "Hi, Its a worderful day , welcome to the Tradesocio ";
-			//$check->displayText = "Hi, Nice to meet you";
-			//$check->source = "webhook-echo-sample";
-			break;
-		
-		case 'bye-bye':
-		$check->fulfillmentText = "Hi...... bye bye";
-		//$check->displayText = "Hi, Nice to meet you";
-		//$check->source = "webhook-echo-sample";
-			break;
+			$check->speech =  "Hi, Its a worderful day , welcome to the Tradesocio ";
+			$check->displayText =  "Hi, Its a worderful day , welcome to the Tradesocio ";
+		break;
+ 
 
 		case 'anything':
-		$check->fulfillmentText =  $action;
-		//$check->displayText = "Hi, Nice to meet you";
-		//$check->source = "webhook-echo-sample";
+			$check->speech =  $action;
+			$check->displayText =  $action;
 		break;
-		
+
+		case 'balance':
+			 $data = postApi();
+			 $check->speech =  $data;
+			 $check->displayText =  $data;
+		break;
+
 		default:
-		$check->fulfillmentText = explodeKeyword($text) ;
-		//$check->displayText = "Hi, Nice to meet you";
-		//$check->source = "webhook-echo-sample";
-			break;
+			$check->speech =  "Hi, Its a worderful day , welcome to the Tradesocio ";
+			$check->displayText =  "Hi, Its a worderful day , welcome to the Tradesocio ";
+		break;
 	}
 
  
