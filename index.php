@@ -2,39 +2,50 @@
 
 $method = $_SERVER['REQUEST_METHOD'];
 
+
+	
 // Process only when method is POST
 if($method == 'POST'){
 	$requestBody = file_get_contents('php://input');
+	$domain = "http://demosite3.fxsocio.com/";
 	$json = json_decode($requestBody);
-	echo $requestBody;exit;
+	$profileID = "22319";
+	$AccountID = "32707";
 
-	$text = $json->queryResult->action;
- 
-	switch ($text) {
+	$action = $json->result->action;
+	$AccountID = $json->result->contexts->parameters->accountID;
+	$profileID  = $json->result->contexts->parameters->profileID;
+	 
+	
+	switch ($action) 
+	{
+		 
+	
 		case 'hi':
-		$check->fulfillmentText = "Hi, Nice to meet you";
+		$check->fulfillmentText = "Hi, Its a worderful day , welcome to the Tradesocio ";
 			//$check->displayText = "Hi, Nice to meet you";
 			//$check->source = "webhook-echo-sample";
 			break;
-
-		case 'bye':
-		$check->fulfillmentText = "Hi, Nice to meet you";
+		
+		case 'bye-bye':
+		$check->fulfillmentText = "Hi...... bye bye";
 		//$check->displayText = "Hi, Nice to meet you";
 		//$check->source = "webhook-echo-sample";
 			break;
 
 		case 'anything':
-		$check->fulfillmentText = "Hi, Nice to meet you anything";
+		$check->fulfillmentText =  $action;
 		//$check->displayText = "Hi, Nice to meet you";
 		//$check->source = "webhook-echo-sample";
-			break;
+		break;
 		
 		default:
-		$check->fulfillmentText = "Hi, Nice to meet you";
+		$check->fulfillmentText = explodeKeyword($text) ;
 		//$check->displayText = "Hi, Nice to meet you";
 		//$check->source = "webhook-echo-sample";
 			break;
 	}
+
  
 	echo json_encode($check);
 }
