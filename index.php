@@ -57,7 +57,7 @@ function postApi($action,$profileID,$AccountID)
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 	$p_result = curl_exec($ch);
-	return $p_result;
+	echo $p_result;
 	exit();
 	if (FALSE === $p_result) {
 	throw new Exception(curl_error(), curl_errno());
