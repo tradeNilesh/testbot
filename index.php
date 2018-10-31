@@ -94,10 +94,7 @@ if($method == 'POST'){
 	$check->AccountID =  $AccountID;
 	$check->profileID =  $profileID;
 
-	echo json_encode($check);exit();
 
-	
-	 
 	
 	switch ($action) 
 	{
