@@ -9,7 +9,7 @@ if($method == 'POST'){
 	$requestBody = file_get_contents('php://input');
 	$domain = "http://demosite3.fxsocio.com/";
 	$json = json_decode($requestBody);
-	echo json_encode($json);exit();
+
 	$profileID = "22319";
 	$AccountID = "32707";
 
