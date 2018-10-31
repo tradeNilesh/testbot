@@ -9,7 +9,7 @@ function postApi($action,$profileID,$AccountID)
  
 	$gettextArray = explode(" ",$text);
 	//print_r($gettextArray);
-	echo $action.$profileID.$profileID;
+	
 	if ($action == "balance" && isset($AccountID) && isset($profileID))
 	  $curlURL = $domain."webservices_new/getbalance.php?keyworddetails=balance&profileID=$profileID&AccountID=".$AccountID ;
 	 
@@ -46,7 +46,7 @@ function postApi($action,$profileID,$AccountID)
 	if ($action == "totalinvested" && isset($profileID) && isset($AccountID))
 	  $curlURL = $domain."webservices_new/getbalance.php?keyworddetails=totalinvested&profileID=$profileID&AccountID=".$AccountID;
 	
-	echo   $curlURL;
+	
 	try
 	{
 		$ch = curl_init();
@@ -57,7 +57,7 @@ function postApi($action,$profileID,$AccountID)
 	curl_setopt($ch, CURLOPT_POST, TRUE);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-	echo $p_result = curl_exec($ch);
+	$p_result = curl_exec($ch);
 		
 	if (FALSE === $p_result) {
 	throw new Exception(curl_error(), curl_errno());
@@ -112,9 +112,7 @@ if($method == 'POST'){
 		break;
 
 		case 'balance':
-			echo "fffff";
 			 $data = postApi($action,$profileID,$AccountID);
-			 echo $data;exit();
 			 $check->speech =  $data;
 			 $check->displayText =  $data;
 		break;
