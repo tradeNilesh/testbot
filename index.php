@@ -115,6 +115,10 @@ if($method == 'POST'){
 			 $data = postApi($action,$profileID,$AccountID);
 			 $check->speech =  $data;
 			 $check->displayText =  $data;
+			 $check->messages->type = 1;
+			 $check->messages->title = "card title";
+			 $check->messages->subtitle = "card text";
+			 $check->messages->imageUrl = "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png";
 		break;
 
 		case 'equity':
@@ -146,7 +150,7 @@ if($method == 'POST'){
 
 		case 'closedposition':
 			 $data = postApi($action,$profileID,$AccountID);
-			 $check->speech =  $data;
+			 $check->speech =  $data; 
 			 $check->displayText =  $data;
 		break;
 
