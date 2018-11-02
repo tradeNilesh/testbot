@@ -1,5 +1,10 @@
 <?php 
+
+$profileID = "22319";
+$AccountID = "32707";
  
+postApi("balance" , $profileID , $AccountID);
+
 $method = $_SERVER['REQUEST_METHOD'];
 
 function postApi($action,$profileID,$AccountID)
