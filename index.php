@@ -14,7 +14,7 @@ function postApi($action,$profileID,$AccountID)
  
 	if ($action == "balance" && isset($AccountID) && isset($profileID)) {
 		$plain = "balance|".$profileID."|" ."$AccountID";
-		$request = encrypts($plain);
+		echo $request = encrypts($plain);
 		$post = strtr($request, '+/=', '-_,' );
 		$curlURL = $domain."?data=".$post;
 	}	
@@ -108,7 +108,7 @@ function postApi($action,$profileID,$AccountID)
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-	$p_result = curl_exec($ch);
+	echo $p_result = curl_exec($ch);
 
 	if (FALSE === $p_result) {
 	throw new Exception(curl_error(), curl_errno());
