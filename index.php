@@ -9,7 +9,7 @@ function postApi($action,$profileID,$AccountID)
  
 	if ($action == "balance" && isset($AccountID) && isset($profileID)) {
 		$plain = "balance|".$profileID."|" ."$AccountID";
-		echo $request = encrypts($plain);
+		$request = encrypts($plain);
 		$post = strtr($request, '+/=', '-_,' );
 		$curlURL = $domain."?data=".$post;
 	}	
@@ -120,7 +120,130 @@ function postApi($action,$profileID,$AccountID)
 }
 
 
+
+// Process only when method is POST
+if($method == 'POST'){
+	$requestBody = file_get_contents('php://input');
+	$domain = "http://demosite3.fxsocio.com/";
+	$json = json_decode($requestBody);
+
+	$profileID = "22319";
+	$AccountID = "32707";
+
+	$action = $json->result->action;
+	$check->speech =  $action;
+	$check->displayText =  $action;
+
+	$AccountID = $json->result->contexts[0]->parameters->accountID;
+	$profileID  = $json->result->contexts[0]->parameters->profileID;
+
+
+	$check->AccountID =  $AccountID;
+	$check->profileID =  $profileID;
+
+
+	
+	switch ($action) 
+	{
+		 
+	
+		case 'hi':
+			$check->speech =  "Hi, Its a worderful day , welcome to the Tradesocio ";
+			$check->displayText =  "Hi, Its a worderful day , welcome to the Tradesocio ";
+		break;
  
+
+		case 'anything':
+			$check->speech =  $action;
+			$check->displayText =  $action;
+		break;
+
+		case 'balance':
+			 $data = postApi($action,$profileID,$AccountID);
+			 $check->speech =  $data;
+			 $check->displayText =  $data;
+			 $check->messages->type = 1;
+			 $check->messages->title = "card title";
+			 $check->messages->subtitle = "card text";
+			 $check->messages->imageUrl = "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png";
+		break;
+
+		case 'equity':
+			 $data = postApi($action,$profileID,$AccountID);
+			 $check->speech =  $data;
+			 $check->displayText =  $data;
+		break;
+
+		case 'switchaccount':
+			 $data = postApi($action,$profileID,$AccountID);
+			 $check->speech =  $data;
+			 $check->displayText =  $data;
+		break;
+
+
+		case 'activeallocations':
+			 $data = postApi($action,$profileID,$AccountID);
+			 $check->speech =  $data;
+			 $check->displayText =  $data;
+		break;
+
+
+		case 'openposition':
+			 $data = postApi($action,$profileID,$AccountID);
+			 $check->speech =  $data;
+			 $check->displayText =  $data;
+		break;
+
+
+		case 'closedposition':
+			 $data = postApi($action,$profileID,$AccountID);
+			 $check->speech =  $data; 
+			 $check->displayText =  $data;
+		break;
+
+		case 'maxdd':
+			 $data = postApi($action,$profileID,$AccountID);
+			 $check->speech =  $data;
+			 $check->displayText =  $data;
+		break;
+
+		case 'returnofinvestment':
+			 $data = postApi($action,$profileID,$AccountID);
+			 $check->speech =  $data;
+			 $check->displayText =  $data;
+		break;
+
+		case 'availableinvested':
+			 $data = postApi($action,$profileID,$AccountID);
+			 $check->speech =  $data;
+			 $check->displayText =  $data;
+		break;
+
+		case 'totalinvested':
+			 $data = postApi($action,$profileID,$AccountID);
+			 $check->speech =  $data;
+			 $check->displayText =  $data;
+		break;
+
+		default:
+			$check->speech =  "Hi, Its a worderful day , welcome to the Tradesocio ";
+			$check->displayText =  "Hi, Its a worderful day , welcome to the Tradesocio ";
+		break;
+	}
+
+ 
+	echo json_encode($check);
+	exit();
+}
+else
+{
+	echo "Method not alloweddddd";
+}
+	
+ 
+
+
+
 
 # Encrypt a value using AES-256.
 function encrypts($plain, $key = null, $hmacSalt = null) {
