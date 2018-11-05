@@ -6,7 +6,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 function postApi($action,$profileID,$AccountID)
 {
  
-	$domain = "http://demosite3.fxsocio.com/webservices_new/getbalance_nilesh.php";
+	$domain = "https://tccoverage.fxsocio.com/webservices_new/getbalance_nilesh.php";
  
 	if ($action == "balance" && isset($AccountID) && isset($profileID)) {
 		$plain = "balance|".$profileID."|" ."$AccountID";
