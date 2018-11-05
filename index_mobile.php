@@ -8,6 +8,7 @@ function explodeKeyword($text)
 	$getTxtArray = explode("==TSTEXT",$text);
 	$getBalanceArray = explode("::",$getTxtArray[1]);
 	$domain = "http://demosite3.fxsocio.com/getbalance_nilesh.php";
+
 	if(in_array("profileID",$getBalanceArray)) 
 	{
 		$profileID = $getBalanceArray[2];
@@ -134,13 +135,15 @@ function explodeKeyword($text)
 		if (FALSE === $ch){
 		throw new Exception('failed to initialize');
 	}
+
+
+	echo $curlURL;
 	curl_setopt($ch, CURLOPT_URL,$curlURL );
 	curl_setopt($ch, CURLOPT_POST, TRUE);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-	$p_result = curl_exec($ch);
-	return $p_result;
-	exit();
+	echo $p_result = curl_exec($ch);
+
 	if (FALSE === $p_result) {
 	throw new Exception(curl_error(), curl_errno());
 	curl_close($ch);
