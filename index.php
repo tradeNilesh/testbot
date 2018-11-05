@@ -103,7 +103,7 @@ function postApi($action,$profileID,$AccountID)
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-	echo $p_result = curl_exec($ch);
+	$p_result = curl_exec($ch);
 
 	if (FALSE === $p_result) {
 	throw new Exception(curl_error(), curl_errno());
